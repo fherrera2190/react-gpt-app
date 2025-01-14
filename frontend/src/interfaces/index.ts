@@ -1,7 +1,2 @@
-export interface OptionRoute {
-  to: string;
-  icon: string;
-  title: string;
-  description: string;
-  component: JSX.Element;
-}
+export * from './orthography.response';
+export * from './pros-cons-discusser.response';

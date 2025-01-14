@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { GptMessages, MyMessage, TypingLoader, TextMessageBox } from "../components";
+import {
+  GptMessages,
+  MyMessage,
+  TypingLoader,
+  TextMessageBox,
+} from "../components";
 
 interface Message {
   text: string;
@@ -24,6 +29,8 @@ export const ChatTemplate = () => {
     <div className="chat-container ">
       <div className="chat-messages">
         <div className="grid grid-cols-12 gap-y-2">
+          <GptMessages text="Puedes escribir lo que sea y lo voy a comparar" />
+
           {messages.map((message, index) => {
             if (message.isGpt) {
               return <GptMessages key={index} text={message.text} />;
