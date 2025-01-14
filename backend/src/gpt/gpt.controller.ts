@@ -1,7 +1,8 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
 import { GptService } from './gpt.service';
-import { OrthographyDto, TranslateDto } from './dtos';
+import { OrthographyDto, TextToAudioDto, TranslateDto } from './dtos';
 import { Response } from 'express';
+import { ImageGenerationDto } from './dtos/image-geneartion.dto';
 @Controller('gpt')
 export class GptController {
   constructor(private readonly gptService: GptService) {}
@@ -14,6 +15,11 @@ export class GptController {
   @Post('translate')
   translate(@Body() translateDto: TranslateDto) {
     return this.gptService.translate(translateDto);
+  }
+
+  @Post('text-to-audio')
+  textToAudio(@Body() textToAudioDto: TextToAudioDto) {
+    return this.gptService.textToAudio(textToAudioDto);
   }
 
   @Post('pros-cons-discusser')
@@ -36,5 +42,10 @@ export class GptController {
     }
 
     res.end();
+  }
+
+  @Post('image-generation')
+  async imageGeneration(@Body() imageGenerationDto: ImageGenerationDto) {
+    return await this.gptService.imageGeneration(imageGenerationDto);
   }
 }
